@@ -9,6 +9,8 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
 # ── STEP 1: Configure your local LLM and Embeddings ────────────────────────────
 
 # 1.a) Ensure Ollama is running in another terminal: `ollama run mistral`
@@ -23,7 +25,7 @@ embedding_function = HuggingFaceEmbeddings(
 
 # This folder ("chroma_db") was created earlier by vault_index.py.
 vectorstore = Chroma(
-    persist_directory="chroma_db",
+    persist_directory=os.path.join(script_dir, "chroma_db"),
     embedding_function=embedding_function,
 )
 # Increase k from 5 to 10 so we retrieve more candidates

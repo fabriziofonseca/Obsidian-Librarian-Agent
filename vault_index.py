@@ -11,8 +11,9 @@ from sentence_transformers import SentenceTransformer
 
 # ────────────────────────────────────────────────────────────────────────────────
 # CONFIGURATION: adjust this if your notes live in a different folder
-vault_path = "./data"       # Path to your Obsidian markdown files
-chroma_folder = "chroma_db" # Where we will store ChromaDB’s on-disk files
+script_dir = os.path.dirname(os.path.abspath(__file__))
+vault_path = os.path.join(script_dir, "data")       # Path to your Obsidian markdown files
+chroma_folder = os.path.join(script_dir, "chroma_db") # Where we will store ChromaDB’s on-disk files
 # ────────────────────────────────────────────────────────────────────────────────
 
 # STEP 0: Remove any old ChromaDB folder so we start fresh each run

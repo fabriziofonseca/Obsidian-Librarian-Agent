@@ -10,9 +10,11 @@ from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
 # ────────────────────────────────────────────────────────────────────────────────
 # CONFIGURATION: adjust this if your notes live in a different folder
-vault_path = "./data"  # Path to your Obsidian markdown notes
+vault_path = os.path.join(script_dir, "data")  # Path to your Obsidian markdown notes
 # ────────────────────────────────────────────────────────────────────────────────
 
 # STEP 1: Load every Markdown file under vault_path
